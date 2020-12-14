@@ -50,6 +50,7 @@ def start_node():
     rospy.init_node('img_proc')
     rospy.loginfo('img_proc node started')
     rospy.Subscriber("image_raw", Image, process_image)
+    pub = rospy.Publisher("hanko", Image, queue_size=1)
     rospy.spin()
 
 if __name__ == '__main__':
@@ -57,3 +58,8 @@ if __name__ == '__main__':
         start_node()
     except rospy.ROSInterruptException:
         pass
+
+    while not rospy.is_shutdown():
+        n = 2
+        pub.publish(n)
+        rate.sleep()
