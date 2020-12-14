@@ -104,8 +104,6 @@ def main():
     set_pos(0.22,0.,0.18)
 
     set_pos(0.33,0.15,0.18)
-    set_pos(0.33,0.15,0.13)
-
 
     open_close(0.7)
 
