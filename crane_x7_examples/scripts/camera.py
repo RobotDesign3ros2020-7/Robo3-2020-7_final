@@ -56,6 +56,7 @@ def start_node():
     sub2 = rospy.Subscriber("ude", UInt8, cb, queue_size=1)
     pub = rospy.Publisher("hanko", Image, queue_size=1)
     rospy.spin()
+    n = 0
 
 if __name__ == '__main__':
     try:

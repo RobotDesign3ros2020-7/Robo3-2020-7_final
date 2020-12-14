@@ -87,7 +87,7 @@ def main():
     set_pos(0.33,0.15,0.23)
     print("done")
 
-
+    n = 0
 
 
 if __name__ == '__main__':
