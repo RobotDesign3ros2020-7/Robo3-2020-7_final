@@ -1,0 +1,5 @@
+<launch>
+	<node pkg="crane_x7_examples" name="pose_groupstate_example" type="dousa1.py" required="true" output="screen" />
+	<node pkg="crane_x7_examples" name="img_proc" type="camera.py" required="true" output="screen" />
+  <node pkg="crane_x7_examples" name="pose_groupstate_example" type="dousa2.py" required="true" output="screen" />
+</launch>
