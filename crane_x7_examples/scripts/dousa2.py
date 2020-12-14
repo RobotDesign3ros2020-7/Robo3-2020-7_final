@@ -79,10 +79,7 @@ def main():
         arm.go()				# 実行
 
 
-    home_pos()
 
-    set_pos(0.33,0.,0.23)
-    set_pos(0.33,0.15,0.23)
     set_pos(0.33,0.15,0.13)
 
     open_close(0.23)
@@ -116,7 +113,6 @@ def main():
     print("Arm goal pose:")
     print(arm_goal_pose)
     print("done")
-
 
 if __name__ == '__main__':
     try:
