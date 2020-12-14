@@ -83,38 +83,6 @@ def main():
 
     set_pos(0.33,0.,0.23)
     set_pos(0.33,0.15,0.23)
-    set_pos(0.33,0.15,0.13)
-
-    open_close(0.23)
-
-    set_pos(0.33,0.15,0.23)
-    set_pos(0.33,0.,0.23)
-    set_pos(0.33,-0.15,0.23)
-    set_pos(0.33,-0.15,0.13)
-    set_pos(0.33,-0.15,0.18)
-    set_pos(0.33,-0.15,0.13)
-    set_pos(0.33,-0.15,0.18)
-
-    set_pos(0.22,0.,0.18)
-    set_pos(0.22,0.,0.13)
-    set_pos(0.20,0.,0.13)
-    set_pos(0.20,0.,0.11)
-    set_pos(0.20,0.01,0.11)
-    set_pos(0.22,0.,0.18)
-
-    set_pos(0.33,0.15,0.18)
-    set_pos(0.33,0.15,0.13)
-
-
-    open_close(0.7)
-
-    home_pos()
-    vertical_pos()
-
-    # 移動後の手先ポーズを表示
-    arm_goal_pose = arm.get_current_pose().pose
-    print("Arm goal pose:")
-    print(arm_goal_pose)
     print("done")
 
 
