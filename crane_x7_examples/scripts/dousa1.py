@@ -94,7 +94,7 @@ if __name__ == '__main__':
     try:
         if not rospy.is_shutdown():
             main()
-             n = 1
+            n = 1
             pub.publish(n)
             rate.sleep()
 
