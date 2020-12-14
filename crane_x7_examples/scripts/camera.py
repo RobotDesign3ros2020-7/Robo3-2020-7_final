@@ -60,10 +60,8 @@ def start_node():
 if __name__ == '__main__':
     try:
         start_node()
-    except rospy.ROSInterruptException:
-        pass
-
-    while not rospy.is_shutdown():
         n = 2
         pub.publish(n)
         rate.sleep()
+    except rospy.ROSInterruptException:
+        pass
