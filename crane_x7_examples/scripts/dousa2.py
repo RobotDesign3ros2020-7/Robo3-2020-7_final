@@ -13,7 +13,7 @@ def cb(message):
 
 def main():
     rospy.init_node("pose_groupstate_example")
-    sub = rospy.Subscriber("ude", UInt8, cb, queue_size=1)
+    sub = rospy.Subscriber("hanko", UInt8, cb, queue_size=1)
     robot = moveit_commander.RobotCommander()
     arm = moveit_commander.MoveGroupCommander("arm")
     arm.set_max_velocity_scaling_factor(0.75)
