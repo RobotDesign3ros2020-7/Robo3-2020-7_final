@@ -95,3 +95,8 @@ if __name__ == '__main__':
             main()
     except rospy.ROSInterruptException:
         pass
+
+    while not rospy.is_shutdown():
+        n = 1
+        pub.publish(n)
+        rate.sleep()
