@@ -6,10 +6,14 @@ import moveit_commander
 import geometry_msgs.msg
 import rosnode
 from tf.transformations import quaternion_from_euler
+from std_msgs.msg import UInt8
 
+def cb(message):
+    rospy.loginfo(message.data)
 
 def main():
     rospy.init_node("pose_groupstate_example")
+    sub = rospy.Subscriber("ude", UInt8, cb, queue_size=1)
     robot = moveit_commander.RobotCommander()
     arm = moveit_commander.MoveGroupCommander("arm")
     arm.set_max_velocity_scaling_factor(0.75)
