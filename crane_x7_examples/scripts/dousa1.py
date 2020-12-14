@@ -10,6 +10,7 @@ from tf.transformations import quaternion_from_euler
 
 def main():
     rospy.init_node("pose_groupstate_example")
+    pub = rospy.Publisher('image', Int32, queue_size=1)
     robot = moveit_commander.RobotCommander()
     arm = moveit_commander.MoveGroupCommander("arm")
     arm.set_max_velocity_scaling_factor(0.75)
@@ -84,6 +85,8 @@ def main():
     set_pos(0.33,0.,0.23)
     set_pos(0.33,0.15,0.23)
     print("done")
+
+
 
 
 if __name__ == '__main__':
