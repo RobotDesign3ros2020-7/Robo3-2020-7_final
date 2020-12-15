@@ -53,7 +53,7 @@ ROSのサンプルコード集はこちらです。
   cd ~/catkin_ws/src
   
   # package for crane_x7_gazebo
-  git clone https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins.git
+  git clone https://github.com/RobotDesign3ros2020-7/Robo3-2020-7_final.git
   
   rosdep install -r -y --from-paths --ignore-src crane_x7_ros
   ```
