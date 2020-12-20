@@ -4,8 +4,7 @@
   <version>0.0.0</version>
   <description>The crane_x7_gazebo package</description>
 
-  <maintainer email="shop@rt-net.jp">RT Corporation</maintainer>
-  <maintainer email="macakasit@gmail.com">Shota Aoki</maintainer>
+  <maintainer email="s19C1052AT@s.chibakoudai.jp">Ros2020-7</maintainer>
 
   <license>NON-COMMERCIAL LICENSE AGREEMENT</license>
   <buildtool_depend>catkin</buildtool_depend>
