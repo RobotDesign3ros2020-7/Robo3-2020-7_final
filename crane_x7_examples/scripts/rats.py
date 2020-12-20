@@ -6,14 +6,17 @@ import moveit_commander
 import geometry_msgs.msg
 import rosnode
 from tf.transformations import quaternion_from_euler
+from std_msgs.msg import Int32
 
 
 def main():
     rospy.init_node("pose_groupstate_example")
+    #sub = rospy.Subscriber('point_x', Int32, callback)
     robot = moveit_commander.RobotCommander()
     arm = moveit_commander.MoveGroupCommander("arm")
     arm.set_max_velocity_scaling_factor(0.75)
     gripper = moveit_commander.MoveGroupCommander("gripper")
+
 
     while len([s for s in rosnode.get_node_names() if 'rviz' in s]) == 0:
         rospy.sleep(1.0)
@@ -78,6 +81,35 @@ def main():
         arm.set_pose_target( target_pose )	# 目標ポーズ設定
         arm.go()				# 実行
 
+    while 1:
+        cx = rospy.wait_for_message("point_x", Int32)
+        cy = rospy.wait_for_message("point_y", Int32)
+
+        print(cx.data)
+        print(cy.data)
+
+        rospy.sleep(1.0)
+
+        if (cx.data < 300)&(cy.data < 220):
+            print("left up")
+        elif (cx.data < 300)&(cy.data >= 220)&(cy.data <= 260):
+            print("left right")
+        elif (cx.data < 300)&(cy.data > 260):
+            print("left down")
+        elif (cx.data >= 300)&(cx.data <= 340)&(cy.data < 220):
+            print("up doun")
+        elif (cx.data > 340)&(cy.data < 220):
+            print("right up")
+        elif (cx.data > 340)&(cy.data >= 220)&(cy.data <= 260):
+            print("right left")
+        elif (cx.data > 340)&(cy.data > 260):
+            print("right down")
+        elif (cx.data >= 300)&(cx.data <= 340)&(cy.data > 260):
+            print("down up")
+        else:
+            print("break")
+            break
+
 
     home_pos()
 
@@ -104,7 +136,6 @@ def main():
 
     set_pos(0.33,0.15,0.18)
     set_pos(0.33,0.15,0.13)
-
 
     open_close(0.7)
 

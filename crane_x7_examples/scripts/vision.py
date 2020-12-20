@@ -3,6 +3,8 @@
 import rospy, cv2, cv_bridge, numpy
 from sensor_msgs.msg import Image
 from geometry_msgs.msg import Twist
+from std_msgs.msg import Int32
+
 
 class Follower:
     def __init__(self):
@@ -29,11 +31,20 @@ class Follower:
             cv2.circle(image, (cx, cy), 5, (0,0,125), -1)
             print(cx,cy)
 
+            #msg.cx = cx
+            #msg.cy = cy
+
+            pub1.publish(cx)
+            pub2.publish(cy)
+
         cv2.imshow("window", mask)
         cv2.imshow("image", image)
         #cv2.imshow("window1", hsv)
         cv2.waitKey(3)
 
 rospy.init_node('follower')
+pub1 = rospy.Publisher("point_x", Int32, queue_size=1)
+pub2 = rospy.Publisher("point_y", Int32, queue_size=1)
+rate = rospy.Rate(0.2)
 follower = Follower()
 rospy.spin()
