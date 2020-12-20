@@ -17,7 +17,6 @@ def main():
     arm.set_max_velocity_scaling_factor(0.75)
     gripper = moveit_commander.MoveGroupCommander("gripper")
 
-
     while len([s for s in rosnode.get_node_names() if 'rviz' in s]) == 0:
         rospy.sleep(1.0)
     rospy.sleep(1.0)
@@ -81,6 +80,14 @@ def main():
         arm.set_pose_target( target_pose )	# 目標ポーズ設定
         arm.go()				# 実行
 
+    pos_x = 0.30
+    pos_y = 0.15
+    pos_z = 0.23
+
+    home_pos()
+    set_pos(0.33,0.,0.23)
+    set_pos(0.33,0.15,0.23)
+
     while 1:
         cx = rospy.wait_for_message("point_x", Int32)
         cy = rospy.wait_for_message("point_y", Int32)
@@ -92,30 +99,47 @@ def main():
 
         if (cx.data < 300)&(cy.data < 220):
             print("left up")
+            pos_x += 0.01
+            pos_y += 0.01
+            set_pos(pos_x,pos_y,pos_z)
         elif (cx.data < 300)&(cy.data >= 220)&(cy.data <= 260):
             print("left right")
+            pos_y += 0.01
+            set_pos(pos_x,pos_y,pos_z)
         elif (cx.data < 300)&(cy.data > 260):
             print("left down")
+            pos_x -= 0.01
+            pos_y += 0.01
+            set_pos(pos_x,pos_y,pos_z)
         elif (cx.data >= 300)&(cx.data <= 340)&(cy.data < 220):
             print("up doun")
+            pos_x -= 0.01
+            set_pos(pos_x,pos_y,pos_z)
         elif (cx.data > 340)&(cy.data < 220):
             print("right up")
+            pos_x += 0.01
+            pos_y -= 0.01
+            set_pos(pos_x,pos_y,pos_z)
         elif (cx.data > 340)&(cy.data >= 220)&(cy.data <= 260):
             print("right left")
+            pos_y -= 0.01
+            set_pos(pos_x,pos_y,pos_z)
         elif (cx.data > 340)&(cy.data > 260):
             print("right down")
+            pos_x -= 0.01
+            pos_y -= 0.01
+            set_pos(pos_x,pos_y,pos_z)
         elif (cx.data >= 300)&(cx.data <= 340)&(cy.data > 260):
             print("down up")
+            pos_x += 0.01
+            set_pos(pos_x,pos_y,pos_z)
         else:
             print("break")
+            pos_x += 0.0445
+            pos_y += 0.05
+            pos_z -= 0.10
+            set_pos(pos_x,pos_y,pos_z)
             break
-
-
-    home_pos()
-
-    set_pos(0.33,0.,0.23)
-    set_pos(0.33,0.15,0.23)
-    set_pos(0.33,0.15,0.13)
 
     open_close(0.23)
 
@@ -147,7 +171,6 @@ def main():
     print("Arm goal pose:")
     print(arm_goal_pose)
     print("done")
-
 
 if __name__ == '__main__':
     try:
