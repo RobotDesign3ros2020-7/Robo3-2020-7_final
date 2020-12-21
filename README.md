@@ -78,6 +78,30 @@ ROSのサンプルコード集はこちらです。
 sudo chmod 666 /dev/ttyUSB0
 ```
 
+## 実行方法について
+### 実機を使う場合
+
+実機で動作を確認する場合、
+制御信号ケーブルを接続した状態で次のコマンドを実行します。
+
+```sh
+sudo chmod 666 /dev/ttyUSB0
+roslaunch crane_x7_bringup demo.launch fake_execution:=false
+```
+
+### realsenceを使う場合
+
+次のコマンドを実行します。
+```sh
+roslaunch realsense2_camera rs_camera.launch
+```
+
+### 実行
+```sh
+rosrun crane_x7_examples vision.py
+rosrun crane_x7_examples rats.py
+```
+
 ## パッケージ概要
 
 CRANE-X7の各パッケージはcrane_x7_rosにまとめています。  
