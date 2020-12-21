@@ -82,11 +82,11 @@ def main():
 
     pos_x = 0.30
     pos_y = 0.15
-    pos_z = 0.23
+    pos_z = 0.25
 
     home_pos()
-    set_pos(0.33,0.,0.23)
-    set_pos(0.33,0.15,0.23)
+    set_pos(0.33,0.,0.25)
+    set_pos(0.33,0.15,0.25)
 
     while 1:
         cx = rospy.wait_for_message("point_x", Int32)
@@ -99,49 +99,49 @@ def main():
 
         if (cx.data < 300)&(cy.data < 220):
             print("left up")
-            pos_x += 0.01
-            pos_y += 0.01
+            pos_x -= 0.005
+            pos_y -= 0.005
             set_pos(pos_x,pos_y,pos_z)
         elif (cx.data < 300)&(cy.data >= 220)&(cy.data <= 260):
-            print("left right")
-            pos_y += 0.01
+            print("left")
+            pos_y -= 0.005
             set_pos(pos_x,pos_y,pos_z)
         elif (cx.data < 300)&(cy.data > 260):
             print("left down")
-            pos_x -= 0.01
-            pos_y += 0.01
+            pos_x += 0.005
+            pos_y -= 0.005
             set_pos(pos_x,pos_y,pos_z)
         elif (cx.data >= 300)&(cx.data <= 340)&(cy.data < 220):
-            print("up doun")
-            pos_x -= 0.01
+            print("up")
+            pos_x += 0.005
             set_pos(pos_x,pos_y,pos_z)
         elif (cx.data > 340)&(cy.data < 220):
             print("right up")
-            pos_x += 0.01
-            pos_y -= 0.01
+            pos_x -= 0.005
+            pos_y += 0.005
             set_pos(pos_x,pos_y,pos_z)
         elif (cx.data > 340)&(cy.data >= 220)&(cy.data <= 260):
-            print("right left")
-            pos_y -= 0.01
+            print("right")
+            pos_y += 0.005
             set_pos(pos_x,pos_y,pos_z)
         elif (cx.data > 340)&(cy.data > 260):
             print("right down")
-            pos_x -= 0.01
-            pos_y -= 0.01
+            pos_x += 0.005
+            pos_y += 0.005
             set_pos(pos_x,pos_y,pos_z)
         elif (cx.data >= 300)&(cx.data <= 340)&(cy.data > 260):
-            print("down up")
-            pos_x += 0.01
+            print("down")
+            pos_y -= 0.005
             set_pos(pos_x,pos_y,pos_z)
         else:
             print("break")
-            pos_x += 0.0445
-            pos_y += 0.05
-            pos_z -= 0.10
+            pos_x -= 0.0445
+            pos_y -= 0.05
+            pos_z -= 0.12
             set_pos(pos_x,pos_y,pos_z)
             break
 
-    open_close(0.23)
+    open_close(0.15)
 
     set_pos(0.33,0.15,0.23)
     set_pos(0.33,0.,0.23)

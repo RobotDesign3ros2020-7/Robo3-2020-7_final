@@ -11,7 +11,6 @@ class Follower:
         self.bridge = cv_bridge.CvBridge()
         cv2.namedWindow("window",1)
         self.image_sub = rospy.Subscriber('camera/color/image_raw', Image, self.image_callback)
-        self.twist = Twist()
 
     def image_callback(self, msg):
         image = self.bridge.imgmsg_to_cv2(msg)
