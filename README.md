@@ -34,7 +34,7 @@ sudo chmod 666 /dev/ttyUSB0
 roslaunch crane_x7_bringup demo.launch fake_execution:=false
 ```
 
-### realsenceを使う場合
+### realsenceを起動する
 
 次のコマンドを実行します。
 ```sh
