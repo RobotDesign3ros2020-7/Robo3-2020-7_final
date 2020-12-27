@@ -3,7 +3,9 @@
   <name>crane_x7_examples</name>
   <version>0.0.0</version>
   <description>examples of CRANE-X7 ROS package</description>
-
+  
+  <maintainer email="s19C1052AT@s.chibakoudai.jp">Ros2020-7</maintainer>
+  
   <license>NON-COMMERCIAL LICENSE AGREEMENT</license>
 
   <buildtool_depend>catkin</buildtool_depend>

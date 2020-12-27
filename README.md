@@ -1,21 +1,8 @@
 [English](README.en.md) | [日本語](README.md)
 
-# crane_x7_ros
+# センサを用いてハンコを押す
 
-[![industrial_ci](https://github.com/rt-net/crane_x7_ros/workflows/industrial_ci/badge.svg?branch=master)](https://github.com/rt-net/crane_x7_ros/actions?query=workflow%3Aindustrial_ci+branch%3Amaster)
-
-![crane_x7_gazebo](https://rt-net.github.io/images/crane-x7/crane_x7_gazebo.png "crane_x7_gazebo")
-
-CRANE-X7のROSパッケージです。
-
-製品ページはこちらです。  
-[https://www.rt-net.jp/products/crane-x7](https://www.rt-net.jp/products/crane-x7)
-
-ROS Wikiはこちらです。  
-[https://wiki.ros.org/crane_x7](https://wiki.ros.org/crane_x7)
-
-ROSのサンプルコード集はこちらです。  
-[crane_x7_examples](https://github.com/rt-net/crane_x7_ros/tree/master/crane_x7_examples)
+ハンコ上部に色検出用の赤色を付け、色検出を行いハンコを押す
 
 ## 動作環境
 
@@ -34,94 +21,32 @@ ROSのサンプルコード集はこちらです。
   - MoveIt! 1.13.3
   - Gazebo 9.0.0
 
-## インストール方法
 
-### ソースからビルドする方法
 
-- [ROS Wiki](http://wiki.ros.org/ja/kinetic/Installation/Ubuntu)を参照しROSをインストールします。
+## 実行方法について
+### 実機を使う場合
 
-- `git`を使用して本パッケージをダウンロードします。
+実機で動作を確認する場合、
+制御信号ケーブルを接続した状態で次のコマンドを実行します。
 
-  ```bash
-  cd ~/catkin_ws/src
-  git clone https://github.com/rt-net/crane_x7_ros.git
-  ```
-
-- 依存関係にあるパッケージをインストールします。
-
-  ```bash
-  cd ~/catkin_ws/src
-  
-  # package for crane_x7_gazebo
-  git clone https://github.com/RobotDesign3ros2020-7/Robo3-2020-7_final.git
-  
-  rosdep install -r -y --from-paths --ignore-src crane_x7_ros
-  ```
-
-- `catkin_make`を使用して本パッケージをビルドします。
-
-  ```bash
-  cd ~/catkin_ws && catkin_make
-  source ~/catkin_ws/devel/setup.bash
-  ```
-
-### `apt`を使用してインストールする方法
-
-後日提供予定です。
-
-## セットアップ方法
-
-`crane_x7_control`が実機と通信する際には`/dev/ttyUSB0`へのアクセス権が必要です。
-`/dev/ttyUSB0`へのアクセス権を変更するには下記のコマンドを実行します。
-
-```bash
+```sh
 sudo chmod 666 /dev/ttyUSB0
+roslaunch crane_x7_bringup demo.launch fake_execution:=false
 ```
 
-## パッケージ概要
+### realsenceを使う場合
 
-CRANE-X7の各パッケージはcrane_x7_rosにまとめています。  
+次のコマンドを実行します。
+```sh
+roslaunch realsense2_camera rs_camera.launch
+```
 
-### crane_x7_description
+### 実行
+```sh
+rosrun crane_x7_examples vision.py
+rosrun crane_x7_examples rats.py
+```
 
-CRANE-X7のモデルデータやリンクとジョイントの構成を定義するパッケージです。  
-MoveIt!やGazeboから呼び出されます。
-
-### crane_x7_control
-
-CRANE-X7の制御を行うパッケージです。  
-dynamixel_sdkのC++ライブラリが必要です。  
-実機との通信には`/dev/ttyUSB0`へのアクセス権が必要です。
-
-通信に使用するポートの名前やサーボ情報は`config/crane_x7_control.yaml`に記載します。  
-設定されたUSBポートが無い場合、コントローラからの指示通りの値を返すダミージョイントモードで動作します。  
-ハードウェアを使用しなくてもデバッグが出来るので便利に使って下さい。  
-
-起動時は設定されたホームポジションへ5秒かけて移動します。  
-ノードを停止するとサーボをブレーキモードに変更してから終了するので安全に停止することができます。  
-
-### crane_x7_moveit_config
-
-MoveIt!のパッケージです。下記のコマンドで起動します。  
-
-`roslaunch crane_x7_moveit_config demo.launch`
-
-### crane_x7_bringup
-
-CRANE-X7の起動に必要なlaunchファイルをまとめたパッケージです。
-
-### crane_x7_examples
-
-サンプルコード集です。
-使い方については[./crane_x7_examples/README.md](./crane_x7_examples/README.md)を参照してください。
-
-### crane_x7_gazebo
-
-GazeboでCRANE-X7のシミュレーションを行うパッケージです。
-
-次のコマンドで起動します。実機との接続やcrane_x7_bringupの実行は必要ありません。
-
-`roslaunch crane_x7_gazebo crane_x7_with_table.launch`
 
 ---
 
