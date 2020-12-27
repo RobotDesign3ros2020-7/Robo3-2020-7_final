@@ -6,10 +6,14 @@ import moveit_commander
 import geometry_msgs.msg
 import rosnode
 from tf.transformations import quaternion_from_euler
+from std_msgs.msg import UInt8
 
+def cb(message):
+    rospy.loginfo(message.data)
 
 def main():
     rospy.init_node("pose_groupstate_example")
+    sub = rospy.Subscriber("hanko", UInt8, cb, queue_size=1)
     robot = moveit_commander.RobotCommander()
     arm = moveit_commander.MoveGroupCommander("arm")
     arm.set_max_velocity_scaling_factor(0.75)
@@ -79,10 +83,7 @@ def main():
         arm.go()				# 実行
 
 
-    home_pos()
 
-    set_pos(0.33,0.,0.23)
-    set_pos(0.33,0.15,0.23)
     set_pos(0.33,0.15,0.13)
 
     open_close(0.23)
@@ -103,8 +104,6 @@ def main():
     set_pos(0.22,0.,0.18)
 
     set_pos(0.33,0.15,0.18)
-    set_pos(0.33,0.15,0.13)
-
 
     open_close(0.7)
 
@@ -116,7 +115,6 @@ def main():
     print("Arm goal pose:")
     print(arm_goal_pose)
     print("done")
-
 
 if __name__ == '__main__':
     try:

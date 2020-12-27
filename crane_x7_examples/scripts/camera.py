@@ -8,6 +8,9 @@ import cv2
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
 
+def cb(message):
+    rospy.loginfo(message.data)
+
 def process_image(msg):                                 #画像処理
     try:
         bridge = CvBridge()
@@ -42,11 +45,21 @@ def detect_red_color(img):
 def start_node():
     rospy.init_node('img_proc')
     rospy.loginfo('img_proc node started')
+<<<<<<< HEAD
     rospy.Subscriber('camera/color/image_raw', Image, process_image)
+=======
+    sub1 = rospy.Subscriber("image_raw", Image, process_image, queue_size=1)
+    sub2 = rospy.Subscriber("ude", UInt8, cb, queue_size=1)
+    pub = rospy.Publisher("hanko", Image, queue_size=1)
+>>>>>>> master
     rospy.spin()
+    n = 0
 
 if __name__ == '__main__':
     try:
         start_node()
+        n = 2
+        pub.publish(n)
+        rate.sleep()
     except rospy.ROSInterruptException:
         pass

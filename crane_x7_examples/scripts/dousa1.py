@@ -6,10 +6,12 @@ import moveit_commander
 import geometry_msgs.msg
 import rosnode
 from tf.transformations import quaternion_from_euler
+from std_msgs.msg import UInt8
 
 
 def main():
     rospy.init_node("pose_groupstate_example")
+    pub = rospy.Publisher("ude", UInt8, queue_size=1)
     robot = moveit_commander.RobotCommander()
     arm = moveit_commander.MoveGroupCommander("arm")
     arm.set_max_velocity_scaling_factor(0.75)
@@ -83,44 +85,18 @@ def main():
 
     set_pos(0.33,0.,0.23)
     set_pos(0.33,0.15,0.23)
-    set_pos(0.33,0.15,0.13)
-
-    open_close(0.23)
-
-    set_pos(0.33,0.15,0.23)
-    set_pos(0.33,0.,0.23)
-    set_pos(0.33,-0.15,0.23)
-    set_pos(0.33,-0.15,0.13)
-    set_pos(0.33,-0.15,0.18)
-    set_pos(0.33,-0.15,0.13)
-    set_pos(0.33,-0.15,0.18)
-
-    set_pos(0.22,0.,0.18)
-    set_pos(0.22,0.,0.13)
-    set_pos(0.20,0.,0.13)
-    set_pos(0.20,0.,0.11)
-    set_pos(0.20,0.01,0.11)
-    set_pos(0.22,0.,0.18)
-
-    set_pos(0.33,0.15,0.18)
-    set_pos(0.33,0.15,0.13)
-
-
-    open_close(0.7)
-
-    home_pos()
-    vertical_pos()
-
-    # 移動後の手先ポーズを表示
-    arm_goal_pose = arm.get_current_pose().pose
-    print("Arm goal pose:")
-    print(arm_goal_pose)
     print("done")
+
+    n = 0
 
 
 if __name__ == '__main__':
     try:
         if not rospy.is_shutdown():
             main()
+            n = 1
+            pub.publish(n)
+            rate.sleep()
+
     except rospy.ROSInterruptException:
         pass
