@@ -1,12 +1,12 @@
 [English](README.en.md) | [日本語](README.md)
 
-# crane_x7_ros
+# Robo3-2020-7_final
 
 [![industrial_ci](https://github.com/rt-net/crane_x7_ros/workflows/industrial_ci/badge.svg?branch=master)](https://github.com/rt-net/crane_x7_ros/actions?query=workflow%3Aindustrial_ci+branch%3Amaster)
 
 ![crane_x7_gazebo](https://rt-net.github.io/images/crane-x7/crane_x7_gazebo.png "crane_x7_gazebo")
 
-CRANE-X7のROSパッケージです。
+CRANE-X7のROSパッケージに千葉工業大学未来ロボティクス学科の講義内グループ7班が変更を加えたものです。
 
 製品ページはこちらです。  
 [https://www.rt-net.jp/products/crane-x7](https://www.rt-net.jp/products/crane-x7)
