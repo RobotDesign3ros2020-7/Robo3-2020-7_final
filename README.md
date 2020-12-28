@@ -44,7 +44,7 @@ ROSのサンプルコード集はこちらです。
 
   ```bash
   cd ~/catkin_ws/src
-  git clone https://github.com/rt-net/crane_x7_ros.git
+  git clone https://github.com/RobotDesign3ros2020-7/Robo3-2020-7_final.git
   ```
 
 - 依存関係にあるパッケージをインストールします。
