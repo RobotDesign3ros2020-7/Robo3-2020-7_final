@@ -36,5 +36,6 @@ rosrun crane_x7_examples vision.py
 rosrun crane_x7_examples rats.py
 ```
 
-  ##　デモ動画リンク
-  https://m.youtube.com/watch?v=v-kNXKOB5Vw
+## デモ動画リンク
+
+https://m.youtube.com/watch?v=v-kNXKOB5Vw
