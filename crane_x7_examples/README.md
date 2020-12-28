@@ -33,6 +33,8 @@ roslaunch realsense2_camera rs_camera.launch
 以下の2つのコマンドを実行します。
 ```sh
 rosrun crane_x7_examples vision.py
-
 rosrun crane_x7_examples rats.py
 ```
+
+  ##　デモ動画リンク
+  https://m.youtube.com/watch?v=v-kNXKOB5Vw
