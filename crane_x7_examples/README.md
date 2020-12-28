@@ -1,7 +1,7 @@
 [English](README.en.md) | [日本語](README.md)
 
 # crane_x7_examples
-このパッケージは、千葉工業大学未来ロボティクス学科の講義内グループ7班が改変したものです。
+このパッケージは、https://github.com/rt-net/crane_x7_ros/tree/master/crane_x7_examples を千葉工業大学未来ロボティクス学科の講義内グループ7班が改変したものです。
 このパッケージは、ハンコを検知し指定の座標にハンコを押すことが出来ます。
 
 ## realsenceの環境構築
