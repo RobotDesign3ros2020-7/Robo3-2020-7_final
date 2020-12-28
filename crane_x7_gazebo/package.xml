@@ -4,7 +4,13 @@
   <version>0.0.0</version>
   <description>The crane_x7_gazebo package</description>
 
-  <maintainer email="s19C1052AT@s.chibakoudai.jp">Ros2020-7</maintainer>
+  <maintainer email="shop@rt-net.jp">RT Corporation</maintainer>
+  <author email="tiryoh@gmail.com">Daisuke Sato</author>
+  <author email="nomura@rt-net.jp">Hiroyuki Nomura</author>
+  <author email="s19c1105lw@s.chibakoudai.jp">Masafumi Hoshino</author>
+  <author email="s19c1051vs@s.chibakoudai.jp">Yuya Sakamoto</author>
+  <author email="s19c1033ap@s.chibakoudai.jp">Takumi Kawamoto</author>
+  <author email="s19c1080un@s.chibakoudai.jp">Yui Tsubaki</author>
 
   <license>NON-COMMERCIAL LICENSE AGREEMENT</license>
   <buildtool_depend>catkin</buildtool_depend>
