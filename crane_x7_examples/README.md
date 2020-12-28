@@ -1,13 +1,12 @@
 [English](README.en.md) | [日本語](README.md)
+このパッケージは、千葉工業大学未来ロボティクス学科の講義内グループ7班が改変したものです。
+このパッケージは、ハンコを検知し指定の座標にハンコを押すことが出来ます。
 
-### インストール方法
-```sh
-cd ~/catkin_ws/src/
-git clone https://github.com/RobotDesign3ros2020-7/Robo3-2020-7_stamp.git
-cd ..
-catkin_make
-rosdep install -r -y --from-path --ignore-src crane_x7_ros
-```
+### realsence の環境構築
+以下のURLを参考にしました。
+https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md
+https://github.com/IntelRealSense/realsense-ros
+
 
 ### 実機を使う場合
 
@@ -15,20 +14,22 @@ rosdep install -r -y --from-path --ignore-src crane_x7_ros
 制御信号ケーブルを接続した状態で次のコマンドを実行します。
 
 ```sh
-sudo chmod 777 /dev/ttyUSB0
-roslaunch crane_x7_control crane_x7_control.launch
+sudo chmod 666 /dev/ttyUSB0
+roslaunch crane_x7_bringup demo.launch fake_execution:=false
 ```
 
-### Gazeboを使う場合
+### realsence を起動
 
-次のコマンドで起動します。実機との接続やcrane_x7_bringupの実行は必要ありません。
+realsenceを接続した状態で、以下のコマンドを実行します。
 
 ```sh
-roslaunch crane_x7_gazebo crane_x7_with_table.launch
+roslaunch realsense2_camera rs_camera.launch
 ```
 
 ### 実行方法
-以下のコマンドで実行します。
+以下の2つのコマンドを実行します。
 ```sh
-rosrun crane_x7_example rats.py 
+rosrun crane_x7_examples vision.py
+
+rosrun crane_x7_examples rats.py
 ```
